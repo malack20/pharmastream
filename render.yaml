@@ -2,7 +2,7 @@ services:
   - type: web
     name: pharmastream-backend
     env: docker
-    dockerFilePath: Dockerfile
+    dockerFilePath: backend/Dockerfile
     dockerContext: backend
     region: oregon
     plan: free
@@ -32,7 +32,7 @@ services:
   - type: web
     name: pharmastream-frontend
     env: docker
-    dockerFilePath: Dockerfile
+    dockerFilePath: frontend/Dockerfile
     dockerContext: frontend
     region: oregon
     plan: free
