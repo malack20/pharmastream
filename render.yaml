@@ -2,8 +2,7 @@ services:
   - type: web
     name: pharmastream-backend
     env: docker
-    dockerFilePath: backend/Dockerfile
-    dockerContext: .
+    rootContext: backend
     region: oregon
     plan: free
     healthCheckPath: /api/health/
@@ -32,8 +31,7 @@ services:
   - type: web
     name: pharmastream-frontend
     env: docker
-    dockerFilePath: frontend/Dockerfile
-    dockerContext: .
+    rootContext: frontend
     region: oregon
     plan: free
     envVars:
