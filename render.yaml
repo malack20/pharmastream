@@ -1,12 +1,11 @@
 services:
   - type: web
     name: pharmastream-backend
-    env: python
-    rootContext: backend
+    env: docker
+    dockerFilePath: Dockerfile
+    dockerContext: backend
     region: oregon
     plan: free
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput --clear
-    startCommand: gunicorn config.wsgi:application --workers 4 --timeout 120
     healthCheckPath: /api/health/
     envVars:
       - key: PYTHON_VERSION
@@ -32,19 +31,14 @@ services:
 
   - type: web
     name: pharmastream-frontend
-    env: static
-    rootContext: frontend
+    env: docker
+    dockerFilePath: Dockerfile
+    dockerContext: frontend
     region: oregon
     plan: free
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    routes:
-      - type: rewrite
-        source: '/*'
-        destination: /index.html
     envVars:
       - key: VITE_API_URL
-        value: https://pharmastream-backend.onrender.com
+        value: https://pharmastream-backend.onrender.com/api
 
 databases:
   - name: pharmastream-db
