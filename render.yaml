@@ -3,7 +3,7 @@ services:
     name: pharmastream-backend
     env: docker
     dockerFilePath: backend/Dockerfile
-    dockerContext: backend
+    dockerContext: .
     region: oregon
     plan: free
     healthCheckPath: /api/health/
@@ -33,7 +33,7 @@ services:
     name: pharmastream-frontend
     env: docker
     dockerFilePath: frontend/Dockerfile
-    dockerContext: frontend
+    dockerContext: .
     region: oregon
     plan: free
     envVars:
